@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="system" method="upgrade">
+    <name>plg_system_aialias</name>
+    <author>GSS</author>
+    <creationDate>2026-09</creationDate>
+    <copyright>(C) 2026 GSS</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>1.3.0</version>
+    <description>PLG_SYSTEM_AIALIAS_XML_DESCRIPTION</description>
+    <namespace path="src">Gss\Plugin\System\AiAlias</namespace>
+    <files>
+        <folder plugin="aialias">services</folder>
+        <folder>src</folder>
+    </files>
+    <media destination="plg_system_aialias" folder="media">
+        <folder>js</folder>
+    </media>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/plg_system_aialias.ini</language>
+        <language tag="en-GB">en-GB/plg_system_aialias.sys.ini</language>
+        <language tag="zh-TW">zh-TW/plg_system_aialias.ini</language>
+        <language tag="zh-TW">zh-TW/plg_system_aialias.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="api_key" type="password" label="PLG_SYSTEM_AIALIAS_API_KEY" description="PLG_SYSTEM_AIALIAS_API_KEY_DESC" autocomplete="new-password" maxlength="500" lock="true" filter="raw"/>
+                <field name="api_base" type="url" label="PLG_SYSTEM_AIALIAS_API_BASE" description="PLG_SYSTEM_AIALIAS_API_BASE_DESC" default="https://api.openai.com/v1" filter="url"/>
+                <field name="model" type="text" label="PLG_SYSTEM_AIALIAS_MODEL" description="PLG_SYSTEM_AIALIAS_MODEL_DESC" default="gpt-4.1-mini"/>
+                <field name="timeout" type="number" label="PLG_SYSTEM_AIALIAS_TIMEOUT" default="15" min="3" max="120" filter="integer"/>
+                <field name="max_length" type="number" label="PLG_SYSTEM_AIALIAS_MAX_LENGTH" default="60" min="20" max="190" filter="integer"/>
+                <field name="extra_prompt" type="textarea" label="PLG_SYSTEM_AIALIAS_EXTRA_PROMPT" description="PLG_SYSTEM_AIALIAS_EXTRA_PROMPT_DESC" rows="4" filter="raw"/>
+            </fieldset>
+            <fieldset name="integration" label="PLG_SYSTEM_AIALIAS_FIELDSET_INTEGRATION">
+                <field name="com_content" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_AIALIAS_COM_CONTENT" description="PLG_SYSTEM_AIALIAS_COM_CONTENT_DESC" default="1" filter="integer">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="com_flexicontent" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_AIALIAS_COM_FLEXICONTENT" description="PLG_SYSTEM_AIALIAS_COM_FLEXICONTENT_DESC" default="1" filter="integer">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="content_ids" type="text" label="PLG_SYSTEM_AIALIAS_CONTENT_IDS" description="PLG_SYSTEM_AIALIAS_CONTENT_IDS_DESC" default="jform_articletext,jform_text,jform_description"/>
+            </fieldset>
+            <fieldset name="automation" label="PLG_SYSTEM_AIALIAS_FIELDSET_AUTOMATION">
+                <field name="auto_mode" type="list" label="PLG_SYSTEM_AIALIAS_AUTO_MODE" description="PLG_SYSTEM_AIALIAS_AUTO_MODE_DESC" default="2" filter="integer">
+                    <option value="0">PLG_SYSTEM_AIALIAS_AUTO_MODE_OFF</option>
+                    <option value="1">PLG_SYSTEM_AIALIAS_AUTO_MODE_NONFORM</option>
+                    <option value="2">PLG_SYSTEM_AIALIAS_AUTO_MODE_ALL</option>
+                </field>
+                <field name="fallback" type="list" label="PLG_SYSTEM_AIALIAS_FALLBACK" description="PLG_SYSTEM_AIALIAS_FALLBACK_DESC" default="joomla">
+                    <option value="joomla">PLG_SYSTEM_AIALIAS_FALLBACK_JOOMLA</option>
+                    <option value="unicode">PLG_SYSTEM_AIALIAS_FALLBACK_UNICODE</option>
+                </field>
+                <field name="fallback_on_error" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_AIALIAS_FALLBACK_ON_ERROR" description="PLG_SYSTEM_AIALIAS_FALLBACK_ON_ERROR_DESC" default="1" filter="integer">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="rate_limit" type="number" label="PLG_SYSTEM_AIALIAS_RATE_LIMIT" description="PLG_SYSTEM_AIALIAS_RATE_LIMIT_DESC" default="20" min="0" filter="integer"/>
+                <field name="quota_cooldown" type="number" label="PLG_SYSTEM_AIALIAS_QUOTA_COOLDOWN" description="PLG_SYSTEM_AIALIAS_QUOTA_COOLDOWN_DESC" default="60" min="0" filter="integer"/>
+                <field name="log" type="radio" layout="joomla.form.field.radio.switcher" label="PLG_SYSTEM_AIALIAS_LOG" description="PLG_SYSTEM_AIALIAS_LOG_DESC" default="1" filter="integer">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
